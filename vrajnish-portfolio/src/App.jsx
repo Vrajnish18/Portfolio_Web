@@ -8,6 +8,7 @@ import Skills from './components/Skills.jsx'
 import Process from './components/Process.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import Dock from './ReactBits/FootNav.jsx'
 
 export default function App() {
   const { theme, toggle } = useTheme()
@@ -25,6 +26,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <Dock />
     </>
   )
 }

@@ -2,6 +2,7 @@ import Avatar from './Avatar.jsx'
 import Icon from './Icon.jsx'
 import Reveal from './Reveal.jsx'
 import { profile, stats } from '../data.js'
+import StrokeText from '../ReactBits/StrokeText.jsx'
 
 const metaLink =
   'inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink'
@@ -20,7 +21,28 @@ export default function Hero() {
 
           <Reveal delay={80}>
             <h1 className="mt-7 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              {profile.name}
+              <StrokeText
+                text={profile.name}
+                strokeColor="#ff7a45"
+                strokeStyle="solid"
+                strokeWidth={1.4}
+                dashLength={10}
+                drawDuration={1.6}
+                fillDelay={0.2}
+                stagger={0.05}
+                ease="power2.out"
+                trigger="mount"
+                fillMode="wipe"
+                wipeFrom="left"
+                fontSize={60}
+                fontWeight={400}
+                letterSpacing={-4}
+                marching={false}
+                hoverRedraw
+                shadow={false}
+                fontFamily="inherit"
+                reverse={false}
+              />
             </h1>
           </Reveal>
 
