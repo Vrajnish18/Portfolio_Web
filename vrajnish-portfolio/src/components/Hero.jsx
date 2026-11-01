@@ -27,9 +27,9 @@ export default function Hero() {
                 strokeStyle="solid"
                 strokeWidth={1.4}
                 dashLength={10}
-                drawDuration={1.6}
-                fillDelay={0.2}
-                stagger={0.05}
+                drawDuration={2.2}
+                fillDelay={0.4}
+                stagger={0.08}
                 ease="power2.out"
                 trigger="mount"
                 fillMode="wipe"
