@@ -11,35 +11,76 @@ export default function Contact() {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    type: 'Website / landing page',
-    budget: 'Not sure yet',
+    mobile: '',
+    subject: '',
     message: '',
   })
 
-  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState('')
 
-  const onSubmit = (e) => {
+  const set = (k) => (e) => {
+    setForm((f) => ({ ...f, [k]: e.target.value }))
+  }
+
+  const onSubmit = async (e) => {
     e.preventDefault()
-    const subject = `Project enquiry: ${form.type}`
-    const body = [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      `Project type: ${form.type}`,
-      `Budget: ${form.budget}`,
-      '',
-      form.message,
-    ].join('\n')
-    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`
+
+    setLoading(true)
+    setStatus('')
+
+    try {
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${profile.email}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            Name: form.name,
+            Email: form.email,
+            Mobile: form.mobile,
+            Subject: form.subject,
+            Message: form.message,
+            _subject: `New Portfolio Enquiry: ${form.subject}`,
+            _template: 'table',
+            _captcha: 'true',
+          }),
+        }
+      )
+
+      const result = await response.json()
+
+      if (!response.ok || result.success !== 'true') {
+        throw new Error(result.message || 'Failed to send message')
+      }
+
+      setStatus('success')
+
+      setForm({
+        name: '',
+        email: '',
+        mobile: '',
+        subject: '',
+        message: '',
+      })
+
+    } catch (error) {
+      console.error('Contact form error:', error)
+      setStatus('error')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <Section
       id="contact"
       eyebrow="Contact"
-      title="Have a project in mind?"
-      intro="Tell me a little about it. I reply within a day, usually sooner."
+      title="LET'S Connect"
+      intro="Have an opportunity or want to connect? Send me a message. I'd be happy to hear from you."
     >
       <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
         <Reveal className="space-y-4">
@@ -55,6 +96,7 @@ export default function Contact() {
               <span className="text-sm font-medium">{profile.email}</span>
             </span>
           </a>
+
           <a
             href={profile.socials.linkedin}
             target="_blank"
@@ -69,6 +111,7 @@ export default function Contact() {
               <span className="text-sm font-medium">Connect with me</span>
             </span>
           </a>
+
           <a
             href={profile.socials.github}
             target="_blank"
@@ -83,22 +126,10 @@ export default function Contact() {
               <span className="text-sm font-medium">See my code</span>
             </span>
           </a>
+
           {profile.platforms.length > 0 && (
             <p className="px-1 pt-2 text-sm text-muted">
-              Prefer a platform? Hire me on{' '}
-              {profile.platforms.map((p, i) => (
-                <span key={p.label}>
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-medium text-accent hover:underline"
-                  >
-                    {p.label}
-                  </a>
-                  {i < profile.platforms.length - 1 ? ' or ' : '.'}
-                </span>
-              ))}
+              LET'S CONNECT
             </p>
           )}
         </Reveal>
@@ -110,7 +141,7 @@ export default function Contact() {
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="block text-sm">
-                <span className="mb-1.5 block text-muted">Your name</span>
+                <span className="mb-1.5 block text-muted">Name</span>
                 <input
                   required
                   value={form.name}
@@ -119,8 +150,9 @@ export default function Contact() {
                   placeholder="Jane Doe"
                 />
               </label>
+
               <label className="block text-sm">
-                <span className="mb-1.5 block text-muted">Your email</span>
+                <span className="mb-1.5 block text-muted">Email</span>
                 <input
                   required
                   type="email"
@@ -131,48 +163,71 @@ export default function Contact() {
                 />
               </label>
             </div>
+
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="block text-sm">
-                <span className="mb-1.5 block text-muted">Project type</span>
-                <select value={form.type} onChange={set('type')} className={field}>
-                  <option>Website / landing page</option>
-                  <option>React web application</option>
-                  <option>Design to code</option>
-                  <option>Performance or bug fixes</option>
-                  <option>Something else</option>
-                </select>
+                <span className="mb-1.5 block text-muted">Mobile No.</span>
+                <input
+                  required
+                  type="tel"
+                  value={form.mobile}
+                  onChange={set('mobile')}
+                  className={field}
+                  placeholder="e.g. 9876543210"
+                />
               </label>
+
               <label className="block text-sm">
-                <span className="mb-1.5 block text-muted">Budget</span>
-                <select value={form.budget} onChange={set('budget')} className={field}>
-                  <option>Not sure yet</option>
-                  <option>Under $500</option>
-                  <option>$500 – $1,500</option>
-                  <option>$1,500 – $5,000</option>
-                  <option>$5,000+</option>
-                </select>
+                <span className="mb-1.5 block text-muted">Subject</span>
+                <input
+                  required
+                  type="text"
+                  value={form.subject}
+                  onChange={set('subject')}
+                  className={field}
+                  placeholder="Subject of your message"
+                />
               </label>
             </div>
+
             <label className="block text-sm">
-              <span className="mb-1.5 block text-muted">About the project</span>
+              <span className="mb-1.5 block text-muted">Message</span>
               <textarea
                 required
                 rows={5}
                 value={form.message}
                 onChange={set('message')}
                 className={`${field} resize-y`}
-                placeholder="What are you building, and when do you need it?"
+                placeholder="Type your message here..."
               />
             </label>
+
             <button
               type="submit"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
+              disabled={loading}
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Send enquiry <Icon name="arrow" size={16} />
+              {loading ? 'Sending...' : 'Send Message'}
+              {!loading && <Icon name="arrow" size={16} />}
             </button>
-            <p className="text-xs text-muted">
-              This opens your email app with the details filled in.
-            </p>
+
+            {status === 'success' && (
+              <p className="text-sm text-green-500">
+                Message sent successfully! Thank you for contacting me.
+              </p>
+            )}
+
+            {status === 'error' && (
+              <p className="text-sm text-red-500">
+                Failed to send message. Please try again later.
+              </p>
+            )}
+
+            {!status && (
+              <p className="text-xs text-muted">
+                Your message will be delivered directly to my inbox.
+              </p>
+            )}
           </form>
         </Reveal>
       </div>

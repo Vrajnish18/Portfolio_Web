@@ -6,20 +6,20 @@
 
 export const profile = {
   name: 'Vrajnish Aghera',
-  role: 'Frontend Developer',
-  stack: ['React', 'Tailwind CSS', 'JavaScript'],
+  role: 'Web Developer',
+  stack: [],
   availability: 'Available for freelance projects',
   location: 'India', // (placeholder) e.g. "Surat, Gujarat, India"
-  email: 'agheravrajnish188@gmail.com',
-  bio: 'Frontend developer who turns designs and rough ideas into fast, accessible, pixel-accurate interfaces. I build with React and Tailwind CSS, care about the small details, and enjoy working directly with founders and small teams, from first call to launch.',
+  email: 'vrajnishaghera18@gmail.com',
+  bio: 'Web developer who turns designs and rough ideas into fast, accessible, pixel-accurate interfaces. I build with React and Tailwind CSS, care about the small details, and enjoy working directly with founders and small teams, from first call to launch.',
   socials: {
     github: 'https://github.com/', // (placeholder) add your profile URL
     linkedin: 'https://www.linkedin.com/', // (placeholder)
   },
   platforms: [
     // (placeholder) add your freelance profiles, or delete the entries
-    { label: 'Upwork', href: 'https://www.upwork.com/' },
-    { label: 'Fiverr', href: 'https://www.fiverr.com/' },
+      { label: 'Upwork', href: 'https://www.upwork.com/' },
+      { label: 'Fiverr', href: 'https://www.fiverr.com/' },
   ],
 }
 
@@ -34,78 +34,173 @@ export const stats = [
 export const services = [
   {
     icon: 'layout',
-    title: 'Landing pages & websites',
-    text: 'Fast, responsive marketing sites that look sharp on every screen and are easy for you to update.',
-    points: ['Responsive from 320px up', 'SEO-ready markup', 'Light and dark themes'],
+    title: 'Web Application Development',
+    text: 'Building responsive, scalable and user-friendly web applications using React.js, TypeScript and modern frontend technologies.',
+    points: [
+      'Reusable React components',
+      'Responsive UI development',
+      'Modern frontend architecture',
+    ],
   },
   {
     icon: 'code',
-    title: 'React web applications',
-    text: 'Dashboards, SaaS front ends and internal tools built with clean, maintainable component code.',
-    points: ['Reusable component systems', 'API and auth integration', 'State management done simply'],
-  },
-  {
-    icon: 'pen',
-    title: 'Design to code',
-    text: 'Figma or screenshots turned into pixel-accurate React and Tailwind, with spacing and type matched.',
-    points: ['Faithful to the design', 'Accessible by default', 'Handoff-friendly code'],
+    title: 'Dashboard & Admin Panel Development',
+    text: 'Developing production-ready dashboards and admin panels with dynamic data, role-based access and interactive interfaces.',
+    points: [
+      'Role-based access control (RBAC)',
+      'Dynamic tables and data management',
+      'Multi-role dashboard interfaces',
+    ],
   },
   {
     icon: 'zap',
-    title: 'Performance & fixes',
-    text: 'Slow page, broken layout or messy codebase? I audit, fix and leave the project in better shape.',
-    points: ['Core Web Vitals tuning', 'Bug fixing and refactors', 'Cross-browser testing'],
+    title: 'API Integration & State Management',
+    text: 'Integrating REST APIs and managing application data to create smooth and reliable frontend experiences.',
+    points: [
+      'REST API integration',
+      'Authentication and authorization',
+      'Context API and Redux fundamentals',
+    ],
+  },
+  {
+    icon: 'settings',
+    title: 'Code Quality & Optimization',
+    text: 'Writing maintainable frontend code, debugging application issues and improving existing user interfaces.',
+    points: [
+      'Component reusability',
+      'Debugging and bug fixing',
+      'Responsive and cross-browser compatibility',
+    ],
   },
 ]
 
 export const projects = [
-  // (placeholder) replace with your real projects
   {
-    name: 'Project One',
-    tag: 'Client work',
-    text: 'Short description of what you built, who it was for and the result. One or two sentences works best.',
-    tech: ['React', 'Tailwind CSS', 'REST API'],
+    name: 'Aookly',
+    tag: 'Production Application',
+    text: 'Worked on a React-based social marketplace platform, developing responsive interfaces, dynamic dashboards, role-based permissions and reusable components. Integrated REST APIs and contributed to multiple application modules.',
+    tech: [
+      'React.js',
+      'TypeScript',
+      'Tailwind CSS',
+      'REST APIs',
+      'Context API',
+    ],
     href: '#',
   },
   {
-    name: 'Project Two',
-    tag: 'Product',
-    text: 'Another project. Mention the problem it solved and your part in it, for example the dashboard UI.',
-    tech: ['React', 'Vite', 'Chart.js'],
+    name: 'Banas AI HR',
+    tag: 'Enterprise HR Management',
+    text: 'Developed frontend modules for an HR management application, including employee management, animal registration workflows, searchable dropdowns, dynamic forms and API-driven data management.',
+    tech: [
+      'React.js',
+      'JavaScript',
+      'REST APIs',
+      'Material UI',
+      'Axios',
+    ],
     href: '#',
   },
   {
-    name: 'Project Three',
-    tag: 'Open source',
-    text: 'A side project or open source tool that shows how you think about code and design.',
-    tech: ['JavaScript', 'Tailwind CSS'],
-    href: '#',
+    name: 'Leafy Lion Café',
+    tag: 'Website Development',
+    text: 'Designed and developed a responsive business website with a modern interface, structured content sections and mobile-friendly layouts.',
+    tech: [
+      'React.js',
+      'Tailwind CSS',
+      'JavaScript',
+      'Responsive Design',
+    ],
+    href: 'https://vrajnish18.github.io/Leafy-Lion-Cafe/',
   },
   {
-    name: 'Project Four',
-    tag: 'Side project',
-    text: 'Anything you are proud of, even a small utility. Real links make the strongest impression.',
-    tech: ['React', 'Firebase'],
+    name: 'Personal Developer Portfolio',
+    tag: 'Personal Project',
+    text: 'Designed and developed a personal portfolio to showcase frontend development skills, technical experience, projects and professional background.',
+    tech: [
+      'React.js',
+      'Tailwind CSS',
+      'JavaScript',
+      'CSS',
+    ],
     href: '#',
   },
 ]
 
 export const skills = [
-  { group: 'Core', items: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'TypeScript'] },
-  { group: 'Frameworks', items: ['React', 'Next.js', 'Tailwind CSS', 'Vite'] },
-  { group: 'Tooling', items: ['Git & GitHub', 'Figma', 'REST APIs', 'Vercel / Netlify'] },
-  { group: 'Quality', items: ['Responsive design', 'Accessibility', 'Web performance', 'SEO basics'] },
+  {
+    group: 'Frontend Development',
+    items: [
+      'HTML5',
+      'CSS3',
+      'JavaScript (ES6+)',
+      'TypeScript',
+      'React.js',
+    ],
+  },
+  {
+    group: 'UI & Styling',
+    items: [
+      'Tailwind CSS',
+      'Material UI',
+      'Bootstrap',
+      'Responsive Design',
+      'jQuery',
+    ],
+  },
+  {
+    group: 'API & State Management',
+    items: [
+      'REST API Integration',
+      'Axios',
+      'Context API',
+      'Redux Toolkit',
+      'JSON',
+    ],
+  },
+  {
+    group: 'Development Tools',
+    items: [
+      'Git',
+      'GitHub',
+      'Git Desktop',
+      'VS Code',
+      'Figma',
+      'Vite',
+    ],
+  },
 ]
 
 export const process = [
-  { title: 'Discover', text: 'A short call or message to understand your goals, audience, deadline and budget.' },
-  { title: 'Plan', text: 'A clear scope, timeline and fixed quote, so you know what you get and when.' },
-  { title: 'Build', text: 'Regular progress links to review as it grows, with feedback built into every step.' },
-  { title: 'Launch & support', text: 'Deployment, handover and 30 days of free fixes after the project goes live.' },
+  {
+    title: 'Understand Requirements',
+    text: 'Understand project requirements, application workflows and technical specifications before starting development.',
+  },
+  {
+    title: 'Develop & Implement',
+    text: 'Build responsive user interfaces using reusable React components and maintainable code structures.',
+  },
+  {
+    title: 'Integrate & Test',
+    text: 'Integrate APIs, handle dynamic application data, debug issues and verify functionality across different devices.',
+  },
+  {
+    title: 'Maintain & Improve',
+    text: 'Fix bugs, improve existing features, optimize interfaces and collaborate with team members to maintain application quality.',
+  },
 ]
 
 export const engagement = [
-  { title: 'Fixed-price project', text: 'Best for websites and well-defined features with a clear scope and deadline.' },
-  { title: 'Hourly', text: 'Best for fixes, audits and work where the scope will change as we go.' },
-  { title: 'Monthly retainer', text: 'Best for ongoing product work and a front-end developer on call each month.' },
+  {
+    title: 'Component-Based Architecture',
+    text: 'Building reusable, modular and maintainable React components for scalable applications.',
+  },
+  {
+    title: 'Problem Solving',
+    text: 'Debugging frontend issues, handling API responses and implementing practical solutions for application requirements.',
+  },
+  {
+    title: 'Team Collaboration',
+    text: 'Working with Git and GitHub, following development workflows and collaborating with team members.',
+  },
 ]
